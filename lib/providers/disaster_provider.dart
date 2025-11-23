@@ -180,12 +180,136 @@ class DisasterProvider extends ChangeNotifier {
     }
   }
 
+  /// Check if location is demo Philippines location
+  bool _isDemoLocation(double lat, double lon) {
+    // Philippines demo coordinates: Manila area (14.5995, 120.9842)
+    // Accept range: 14.0 to 15.0 latitude, 120.5 to 121.5 longitude
+    return lat >= 14.0 && lat <= 15.0 && lon >= 120.5 && lon <= 121.5;
+  }
+
+  /// Load demo data for Philippines high-risk simulation
+  Future<void> _loadDemoData() async {
+    print('🎭 DEMO MODE ACTIVATED - Philippines High-Risk Simulation');
+    print('⏳ Analyzing disaster data from multiple sources...');
+    
+    // Add 5-second buffer to simulate real data analysis
+    // This makes the demo feel more realistic
+    await Future.delayed(Duration(seconds: 5));
+    
+    print('📊 Processing satellite imagery...');
+    await Future.delayed(Duration(milliseconds: 500));
+    
+    print('🌊 Calculating flood risk models...');
+    await Future.delayed(Duration(milliseconds: 500));
+    
+    print('🌀 Analyzing cyclone trajectory...');
+    await Future.delayed(Duration(milliseconds: 500));
+    
+    // Set high-risk scores for Philippines (cyclone-prone area)
+    _riskScores[DisasterType.cyclone] = 0.85; // Critical
+    _riskScores[DisasterType.flood] = 0.75; // High
+    _riskScores[DisasterType.earthquake] = 0.45; // Medium
+    _riskScores[DisasterType.wildfire] = 0.15; // Low
+    _riskScores[DisasterType.heatwave] = 0.25; // Low
+
+    // Create simulated weather data
+    _currentWeather = WeatherData(
+      temperature: 28.5,
+      feelsLike: 32.0,
+      tempMin: 26.0,
+      tempMax: 30.0,
+      humidity: 85,
+      pressure: 985, // Low pressure indicating storm
+      windSpeed: 45.0, // Strong winds
+      windDeg: 45, // Northeast
+      description: 'Tropical Storm Approaching',
+      icon: '11d',
+      visibility: 2000,
+      rainfall: 25.0,
+      timestamp: DateTime.now(),
+    );
+
+    // Create demo location
+    final demoLocation = app_location.Location(
+      id: 'demo-manila',
+      name: 'Manila, Philippines',
+      latitude: _currentPosition!.latitude,
+      longitude: _currentPosition!.longitude,
+      type: 'city',
+    );
+
+    // Generate demo alerts
+    _alerts = [
+      Alert(
+        id: 'demo-cyclone-001',
+        title: 'Tropical Cyclone Warning',
+        message: 'Severe tropical cyclone approaching Manila region. Wind speeds up to 150 km/h expected. Immediate evacuation recommended for coastal areas.',
+        severity: AlertSeverity.critical,
+        disasterType: DisasterType.cyclone,
+        location: demoLocation,
+        issuedAt: DateTime.now().subtract(Duration(hours: 2)),
+        expiresAt: DateTime.now().add(Duration(hours: 12)),
+        affectedRadiusKm: 50.0,
+        safetyInstructions: [
+          'Evacuate coastal areas immediately',
+          'Secure all loose objects outdoors',
+          'Stock up on emergency supplies',
+          'Stay indoors during the storm',
+        ],
+      ),
+      Alert(
+        id: 'demo-flood-001',
+        title: 'Flash Flood Watch',
+        message: 'Heavy rainfall expected (200-300mm in 24 hours). Low-lying areas at risk of flash flooding. Prepare emergency supplies and evacuation routes.',
+        severity: AlertSeverity.severe,
+        disasterType: DisasterType.flood,
+        location: demoLocation,
+        issuedAt: DateTime.now().subtract(Duration(hours: 1)),
+        expiresAt: DateTime.now().add(Duration(hours: 24)),
+        affectedRadiusKm: 30.0,
+        safetyInstructions: [
+          'Move to higher ground',
+          'Avoid flood-prone areas',
+          'Do not drive through flooded roads',
+          'Have evacuation plan ready',
+        ],
+      ),
+      Alert(
+        id: 'demo-wind-001',
+        title: 'Extreme Wind Advisory',
+        message: 'Damaging winds with gusts up to 150 km/h. Secure loose objects, stay indoors, and avoid travel.',
+        severity: AlertSeverity.warning,
+        disasterType: DisasterType.cyclone,
+        location: demoLocation,
+        issuedAt: DateTime.now().subtract(Duration(minutes: 45)),
+        expiresAt: DateTime.now().add(Duration(hours: 18)),
+        affectedRadiusKm: 40.0,
+        safetyInstructions: [
+          'Stay indoors',
+          'Secure outdoor furniture',
+          'Avoid windows',
+          'Charge electronic devices',
+        ],
+      ),
+    ];
+
+    print('🎭 Demo data loaded: Overall Risk = ${(overallRisk * 100).toInt()}%');
+    print('✅ Demo analysis complete - High risk detected!');
+  }
+
   /// Load all disaster data
   Future<void> _loadAllData() async {
     if (_currentPosition == null) return;
 
     final lat = _currentPosition!.latitude;
     final lon = _currentPosition!.longitude;
+
+    // Check if this is demo mode for Philippines
+    if (_isDemoLocation(lat, lon)) {
+      await _loadDemoData();
+      notifyListeners();
+      return;
+    }
 
     _apiErrors.clear(); // Clear previous errors
 

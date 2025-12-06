@@ -1,114 +1,72 @@
-# 🌪️ StormShield - AI-Powered Disaster Prediction Platform
+git clone https://github.com/yourusername/stormshield.git
 
-<div align="center">
+# StormShield – My AI-Powered Disaster Prediction Platform
 
-**Predict. Alert. Save Lives.**
-
-[![Flutter](https://img.shields.io/badge/Flutter-3.16+-02569B?logo=flutter)](https://flutter.dev)
-[![100% FREE](https://img.shields.io/badge/Cost-$0%20Forever-success)](https://github.com)
-[![OpenStreetMap](https://img.shields.io/badge/Maps-OpenStreetMap-7EBC6F)](https://www.openstreetmap.org/)
-[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-
-**✅ Ready to Run | ✅ All FREE APIs | ✅ No Credit Card Needed**
-
-</div>
+Hi there! Thanks for checking out StormShield. I built this project to help predict, map, and respond to natural disasters like floods, cyclones, earthquakes, heatwaves, and wildfires – all using free and open APIs.
 
 ---
 
-## 🎯 About
+## Why I Made StormShield
 
-**StormShield** is an AI-powered disaster management platform that predicts, maps, and responds to natural disasters such as floods, cyclones, earthquakes, heatwaves, and wildfires using **100% FREE APIs**.
-
-### 🎊 **Project Status: COMPLETE & READY TO USE!**
-
-👉 **[START HERE - Quick Setup Guide](./START_HERE.md)** 👈
-
-### Key Features
-
-✅ **Real-time disaster predictions** with AI (Gemini gemini-pro model)  
-✅ **Hyper-local alerts** at village/district level  
-✅ **Interactive risk maps** showing safe zones with OpenStreetMap  
-✅ **Modern Material Design 3 UI** with responsive layouts  
-✅ **Multi-channel alerts** via app notifications  
-✅ **Cross-platform support** (Web, Android, iOS, Desktop)
+I wanted to create a tool that could provide real-time disaster alerts and risk analysis for anyone, anywhere. With StormShield, you get hyper-local alerts, interactive risk maps, and a modern, responsive UI – all for free. No credit card, no paid APIs, just open technology for public good.
 
 ---
 
-## 🚀 Quick Start
+## How to Get Started
 
-### Prerequisites
+**Requirements:**
+- Flutter SDK 3.16.0 or newer
+- Dart SDK 3.0.0 or newer
 
-- Flutter SDK ≥ 3.16.0
-- Dart SDK ≥ 3.0.0
-
-### Installation
-
+**To run StormShield:**
 ```bash
-# 1. Clone repository
 git clone https://github.com/yourusername/stormshield.git
 cd stormshield
-
-# 2. Install dependencies
 flutter pub get
-
-# 3. Configure environment
-cp .env.example .env
-# Edit .env and add your API keys
-
-# 4. Run app
+cp .env.example .env   # Add your API keys to .env
 flutter run
 ```
 
 ---
 
-## 🔑 Required API Keys (All FREE!)
+## API Keys I Used
 
-| Service | Purpose | Free Tier | Link | API Key Required |
-|---------|---------|-----------|------|------------------|
-| **Open-Meteo** | Weather Data | Unlimited | [open-meteo.com](https://open-meteo.com/) | ❌ No key needed |
-| **NASA FIRMS** | Wildfires | Unlimited | [firms.modaps.eosdis.nasa.gov](https://firms.modaps.eosdis.nasa.gov/) | ✅ Yes |
-| **Gemini AI** | AI Predictions | 60 req/min | [ai.google.dev](https://ai.google.dev/) | ✅ Yes |
-| **Supabase** | Database (Optional) | 500MB | [supabase.com](https://supabase.com) | ⚪ Optional |
-| **USGS** | Earthquakes | Unlimited | [earthquake.usgs.gov](https://earthquake.usgs.gov/fdsnws/event/1/) | ❌ No key needed |
-| **OpenStreetMap** | Maps | Unlimited | [openstreetmap.org](https://www.openstreetmap.org/) | ❌ No key needed |
-
-📖 **Detailed setup guide:** [SETUP.md](./SETUP.md) ⭐ **START HERE!**  
-📋 **Full documentation:** [IMPLEMENTATION_GUIDE.md](./IMPLEMENTATION_GUIDE.md)  
-🤖 **For AI assistants:** [AI_INSTRUCTIONS.md](./AI_INSTRUCTIONS.md)
+Most APIs are free and don’t need a key, but for some (like NASA FIRMS and Gemini AI), you’ll need to sign up and add your key to the `.env` file. Full details are in [SETUP.md](./SETUP.md).
 
 ---
 
-## 🛠️ Tech Stack
+## What’s Inside
 
-- **Frontend:** Flutter 3.16+ (Web, Android, iOS, Windows, macOS, Linux)
-- **Backend:** Supabase (PostgreSQL + PostGIS) - Optional, currently unused
-- **APIs:** Open-Meteo (weather), USGS (earthquakes), NASA FIRMS (wildfires), Gemini AI (predictions) - All FREE
-- **State Management:** Provider pattern
-- **Maps:** OpenStreetMap with flutter_map (FREE, no API key)
+- **Frontend:** Flutter (Web, Android, iOS, Desktop)
+- **Backend:** Supabase (PostgreSQL + PostGIS) – optional, not required to run
+- **APIs:** Open-Meteo, USGS, NASA FIRMS, Gemini AI
+- **State Management:** Provider
+- **Maps:** OpenStreetMap (no API key needed)
 
 ---
 
-## 📁 Project Structure
+## How I Organized the Code
 
 ```
 lib/
-├── config/          # Environment & configuration
+├── config/          # App configuration
 ├── models/          # Data models
-├── services/        # API services
+├── services/        # API and data services
 ├── providers/       # State management
 ├── screens/         # UI screens
-└── widgets/         # Reusable components
+└── widgets/         # Reusable UI components
 ```
 
 ---
 
-## 🧪 Testing
+## Testing & Building
 
+To run tests:
 ```bash
-# Run all tests
 flutter test
-
-# Build for release
+```
+To build for release:
+```bash
 flutter build apk --release   # Android
 flutter build ios --release   # iOS
 flutter build web --release   # Web
@@ -116,28 +74,22 @@ flutter build web --release   # Web
 
 ---
 
-## 📝 Documentation
+## Documentation
 
-- **[Implementation Guide](./IMPLEMENTATION_GUIDE.md)** - Complete step-by-step setup
-- **[AI Instructions](./AI_INSTRUCTIONS.md)** - Guide for AI models/assistants
-- **[API Documentation](./docs/API.md)** - API endpoints and usage
-- **[Database Schema](./database/schema.sql)** - Supabase database structure
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! Please read [CONTRIBUTING.md](./CONTRIBUTING.md) for details.
+- [Implementation Guide](./IMPLEMENTATION_GUIDE.md) – Full setup and usage
+- [AI Instructions](./AI_INSTRUCTIONS.md) – For AI/ML integration
+- [API Docs](./docs/API.md)
+- [Database Schema](./database/schema.sql)
 
 ---
 
-## 📄 License
+## Want to Contribute?
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+I’d love your help! Check out [CONTRIBUTING.md](./CONTRIBUTING.md) for how to get started.
 
 ---
 
-## 👥 Contact
+## About Me
 
 **Project Lead:** [Your Name](https://github.com/yourusername)  
 **Email:** your.email@example.com  
@@ -145,10 +97,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-<div align="center">
+Thanks for reading! I hope StormShield helps make the world a little safer.
 
-**Made with ❤️ for a safer world**
-
-[⬆ Back to top](#-stormshield---ai-powered-disaster-prediction-platform)
-
-</div>
+---

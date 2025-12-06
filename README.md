@@ -96,7 +96,5 @@ I’d love your help! Check out [CONTRIBUTING.md](./CONTRIBUTING.md) for how to 
 
 
 ---
-
 Thanks for reading! I hope StormShield helps make the world a little safer.
-
 ---

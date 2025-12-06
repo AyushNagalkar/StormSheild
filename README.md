@@ -91,9 +91,9 @@ I’d love your help! Check out [CONTRIBUTING.md](./CONTRIBUTING.md) for how to 
 
 ## About Me
 
-**Project Lead:** [Your Name](https://github.com/yourusername)  
-**Email:** your.email@example.com  
-**University:** [Your University Name]
+**Project Lead:** [Ayush Nagalkar](https://github.com/yourusername)  
+**Email:** ayushnagalkar262@gmail.com  
+
 
 ---
 

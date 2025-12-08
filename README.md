@@ -19,7 +19,7 @@ I wanted to create a tool that could provide real-time disaster alerts and risk 
 
 **To run StormShield:**
 ```bash
-git clone https://github.com/yourusername/stormshield.git
+git clone URL
 cd stormshield
 flutter pub get
 cp .env.example .env   # Add your API keys to .env
